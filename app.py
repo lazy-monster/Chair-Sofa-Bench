@@ -10,9 +10,11 @@ def classify_image(img):
     return dict(zip(categories, map(float, probs)))
 
 
-image = gr.inputs.Image(shape=(192, 192))
-label = gr.outputs.Label()
+# Updated components
+image = gr.Image(type="pil", shape=(192, 192))
+label = gr.Label()
 examples = ["chair1.jpg", "bench1.jpg", "sofa1.jpg", "dunno1.jpg"]
 
+# Interface with new components
 intf = gr.Interface(fn=classify_image, inputs=image, outputs=label, examples=examples)
-intf.launch(inline=False)
+intf.launch()
